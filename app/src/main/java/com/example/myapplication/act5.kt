@@ -23,6 +23,7 @@ fun FormDataDiri(modifer: Modifier){
         )
 
         OutlinedTextField(
+            value = textAlamat,
 
         )
     }
