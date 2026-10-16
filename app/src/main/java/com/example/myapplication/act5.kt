@@ -1,8 +1,25 @@
 package com.example.myapplication
 
+import android.R
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
-@composable
+@Composable
 fun FormDataDiri(modifer: Modifier){
     var textNama by remember {mutableStateOf(value="")}
     var textAlamat by remember {mutableStateOf(value="")}
@@ -12,7 +29,7 @@ fun FormDataDiri(modifer: Modifier){
     var nama by remember {mutableStateOf(value="")}
     var alamat by remember {mutableStateOf(value="")}
     var jenis by remember {mutableStateOf(values="")}
-    var gender:list<string> = ListOf("laki-Laki", "Perempuan")
+    var gender:list<R.string> = ListOf("laki-Laki", "Perempuan")
     Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment>CenterHorizontally) {
@@ -43,4 +60,19 @@ fun FormDataDiri(modifer: Modifier){
                 }
             }
         }
+        OutlinedTextField(
+            value = textAlamat,
+            singleLine = true,
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Alamat") },
+            OnValueChange = {
+                textAlamat = it
+            }
     }}
+
+@Composable
+fun ListOf(x0: String, x1: String) {
+    TODO("Not yet implemented")
+}
+
+
