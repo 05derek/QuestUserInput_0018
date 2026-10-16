@@ -15,22 +15,13 @@ fun FormDataDiri(modifer: Modifier){
     var gender:list<string> = ListOf("laki-Laki", "Perempuan")
     Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment>CenterHorizontally){
+        horizontalAlignment = Alignment>CenterHorizontally) {
         OutlinedTextField(
             value = textNama,
-            onValueChange = { textNama = it },
-            label = { Text("Nama") }
-        )
-
-        OutlinedTextField(
-            value = textAlamat,
-            onValueChange = { textAlamat = it },
-            label = { Text("Alamat") }
-        )
-
-        OutlinedTextField(
+            singleLine = true,
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Nama Lengkap") },
 
         )
-    }
-
-}
+    }}
