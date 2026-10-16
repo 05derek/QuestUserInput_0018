@@ -26,4 +26,7 @@ fun FormDataDiri(modifer: Modifier){
                 textNama = it
             }
         )
+        Row(){
+
+        }
     }}
