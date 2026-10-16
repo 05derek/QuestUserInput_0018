@@ -22,6 +22,8 @@ fun FormDataDiri(modifer: Modifier){
             shape = MaterialTheme.shapes.large,
             modifier = Modifier.width(250.dp),
             label = { Text(text = "Nama Lengkap") },
+            OnValueChange = {
 
+            }
         )
     }}
