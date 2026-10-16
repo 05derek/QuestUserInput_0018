@@ -1,14 +1,17 @@
 package com.example.myapplication
 
-import android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.Button
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -18,91 +21,84 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FormDataDiri(modifer: Modifier) {
-    var textNama by remember { mutableStateOf(value = "") }
-    var textAlamat by remember { mutableStateOf(value = "") }
-    var textJK by remember { mutableStateOf(value = "") }
+fun FormDataDiri(modifier: Modifier = Modifier) {
+    var textNama by remember { mutableStateOf("") }
+    var textAlamat by remember { mutableStateOf("") }
+    var textJK by remember { mutableStateOf("") }
 
+    var nama by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
+    var jenis by remember { mutableStateOf("") }
 
-    var nama by remember { mutableStateOf(value = "") }
-    var alamat by remember { mutableStateOf(value = "") }
-    var jenis by remember { mutableStateOf(values = "") }
-    var gender: list<R.string> = ListOf("laki-Laki", "Perempuan")
+    val gender: List<String> = listOf("Laki-Laki", "Perempuan")
+
     Column(
-        modifier = Modifier.padding(top = 50.dp),
+        modifier = modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment > CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
             value = textNama,
+            onValueChange = { textNama = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
             modifier = Modifier.width(250.dp),
-            label = { Text(text = "Nama Lengkap") },
-            OnValueChange = {
-                textNama = it
-            }
+            label = { Text(text = "Nama Lengkap") }
         )
-        Row() {
+
+        Row {
             gender.forEach { item ->
                 Row(
                     modifier = Modifier.selectable(
-                    selected = textJK == item,
-                    onClick = { textJK = item }
-                ), verticalAlignment = Alignment.CenterVertically) {
+                        selected = textJK == item,
+                        onClick = { textJK = item }
+                    ),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     RadioButton(
                         selected = textJK == item,
-                        onClick = {
-                            textJK = item
-                        }
+                        onClick = { textJK = item }
                     )
-                    Text(item)
-
+                    Text(text = item)
                 }
             }
         }
+
         OutlinedTextField(
             value = textAlamat,
+            onValueChange = { textAlamat = it },
             singleLine = true,
             modifier = Modifier.width(250.dp),
-            label = { Text(text = "Alamat") },
-            OnValueChange = {
-                textAlamat = it
-            }
+            label = { Text(text = "Alamat") }
         )
+
         HorizontalDivider(
-            modifier = Modifier.padding(
-                bottom =
-                    dimensionResource(id = R.dimen.padding_medium), top = dimensionResource(
-                    id = R.dimen.padding_medium
-                )
-            ),
-            thickness = dimensionResource(id = R.dimen.divider_tipis),
-            color = Color.DankGray
+            modifier = Modifier.padding(vertical = 16.dp),
+            thickness = 1.dp,
+            color = Color.DarkGray
         )
+
         Button(
-            modifier = Modifier.fillMaxWidth(fraction = 1f),
-            enabled = textAlamat.isNotEmpty(),
+            modifier = Modifier.fillMaxWidth(),
+            enabled = textAlamat.isNotEmpty() && textNama.isNotEmpty(),
             onClick = {
                 nama = textNama
                 jenis = textJK
                 alamat = textAlamat
             }
         ) {
-            Text(stringResource(id = R.string.submit))
+            Text("Submit")
         }
 
         HorizontalDivider(
-            modifier = Modifier.padding(
-                bottom = dimensionResource(id = R.dimen.padding_medium),
-                top = dimensionResource(id = R.dimen.padding_medium)
-            ),
-            thickness = dimensionResource(id = R.dimen.divider_tipis),
+            modifier = Modifier.padding(vertical = 16.dp),
+            thickness = 1.dp,
             color = Color.DarkGray
         )
 
@@ -114,20 +110,12 @@ fun FormDataDiri(modifer: Modifier) {
                 .width(300.dp)
         ) {
             Column(
-                modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp)
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 15.dp)
             ) {
-                Text(text = "Nama : " + nama, color = Color.White)
-                Text(text = "Gender : " + jenis, color = Color.White)
-                Text(text = "Alamat : " + alamat, color = Color.White)
+                Text(text = "Nama : $nama", color = Color.White)
+                Text(text = "Gender : $jenis", color = Color.White)
+                Text(text = "Alamat : $alamat", color = Color.White)
             }
         }
     }
 }
-
-
-@Composable
-fun ListOf(x0: String, x1: String) {
-    TODO("Not yet implemented")
-}
-
-
