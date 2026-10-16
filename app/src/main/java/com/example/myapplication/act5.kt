@@ -15,7 +15,7 @@ fun FormDataDiri(modifer: Modifier){
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment>CenterHorizontally){
         OutlinedTextField(
-
+            value = textNama,
         )
     }
 
