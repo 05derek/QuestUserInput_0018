@@ -23,7 +23,7 @@ fun FormDataDiri(modifer: Modifier){
             modifier = Modifier.width(250.dp),
             label = { Text(text = "Nama Lengkap") },
             OnValueChange = {
-
+                textNama = it
             }
         )
     }}
