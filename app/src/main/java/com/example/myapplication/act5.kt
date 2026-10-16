@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import androidx.compose.material3.OutlinedTextField
+
 @composable
 fun FormDataDiri(modifer: Modifier){
     var textNama by remember {mutableStateOf(value="")}
@@ -18,6 +20,10 @@ fun FormDataDiri(modifer: Modifier){
             value = textNama,
             onValueChange = { textNama = it },
             label = { Text("Nama") }
+        )
+
+        OutlinedTextField(
+
         )
     }
 
