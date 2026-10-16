@@ -3,10 +3,12 @@ package com.example.myapplication
 import android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -21,19 +23,21 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FormDataDiri(modifer: Modifier){
-    var textNama by remember {mutableStateOf(value="")}
-    var textAlamat by remember {mutableStateOf(value="")}
-    var textJK by remember {mutableStateOf(value="")}
+fun FormDataDiri(modifer: Modifier) {
+    var textNama by remember { mutableStateOf(value = "") }
+    var textAlamat by remember { mutableStateOf(value = "") }
+    var textJK by remember { mutableStateOf(value = "") }
 
 
-    var nama by remember {mutableStateOf(value="")}
-    var alamat by remember {mutableStateOf(value="")}
-    var jenis by remember {mutableStateOf(values="")}
-    var gender:list<R.string> = ListOf("laki-Laki", "Perempuan")
-    Column(modifier = Modifier.padding(top = 50.dp),
+    var nama by remember { mutableStateOf(value = "") }
+    var alamat by remember { mutableStateOf(value = "") }
+    var jenis by remember { mutableStateOf(values = "") }
+    var gender: list<R.string> = ListOf("laki-Laki", "Perempuan")
+    Column(
+        modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment>CenterHorizontally) {
+        horizontalAlignment = Alignment > CenterHorizontally
+    ) {
         OutlinedTextField(
             value = textNama,
             singleLine = true,
@@ -44,12 +48,13 @@ fun FormDataDiri(modifer: Modifier){
                 textNama = it
             }
         )
-        Row(){
-            gender.forEach {item ->
-                Row(modifier = Modifier.selectable(
+        Row() {
+            gender.forEach { item ->
+                Row(
+                    modifier = Modifier.selectable(
                     selected = textJK == item,
                     onClick = { textJK = item }
-                ), verticalAlignment = Alignment.CenterVertically){
+                ), verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
                         selected = textJK == item,
                         onClick = {
@@ -73,22 +78,22 @@ fun FormDataDiri(modifer: Modifier){
         HorizontalDivider(
             modifier = Modifier.padding(
                 bottom =
-                    dimensionResource(id=R.dimen.padding_medium), top = dimensionResource(
-                        id = R.dimen.padding_medium
-                    )
+                    dimensionResource(id = R.dimen.padding_medium), top = dimensionResource(
+                    id = R.dimen.padding_medium
+                )
             ),
             thickness = dimensionResource(id = R.dimen.divider_tipis),
             color = Color.DankGray
         )
         Button(
-            modifier = Modifier.fillMaxWidth(fraction=1f),
+            modifier = Modifier.fillMaxWidth(fraction = 1f),
             enabled = textAlamat.isNotEmpty(),
             onClick = {
                 nama = textNama
                 jenis = textJK
                 alamat = textAlamat
             }
-        ){
+        ) {
             Text(stringResource(id = R.string.submit))
         }
 
@@ -107,16 +112,18 @@ fun FormDataDiri(modifer: Modifier){
             modifier = Modifier
                 .height(110.dp)
                 .width(300.dp)
-        ){
+        ) {
             Column(
                 modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp)
             ) {
-                Text(text = "Nama : "+nama, color = Color.White)
-                Text(text = "Gender : "+jenis, color = Color.White)
-                Text(text = "Alamat : "+alamat, color = Color.White)
+                Text(text = "Nama : " + nama, color = Color.White)
+                Text(text = "Gender : " + jenis, color = Color.White)
+                Text(text = "Alamat : " + alamat, color = Color.White)
             }
         }
-    }}
+    }
+}
+
 
 @Composable
 fun ListOf(x0: String, x1: String) {
