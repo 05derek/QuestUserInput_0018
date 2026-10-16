@@ -88,7 +88,9 @@ fun FormDataDiri(modifer: Modifier){
                 jenis = textJK
                 alamat = textAlamat
             }
-        )
+        ){
+            Text(stringResource(id = R.string.submit))
+        }
     }}
 
 @Composable
